@@ -1,8 +1,16 @@
+$name = ENV['NAME'] || "devops"
+
+$set_environment_variables = <<SCRIPT
+cat << EOF > /etc/profile.d/myvars.sh
+export NAME=#{$name}
+EOF
+SCRIPT
+
 Vagrant.configure('2') do |config|
-    config.vm.define "devops"
-    config.vm.hostname = "devops"
+    config.vm.define "#{$name}"
+    config.vm.hostname = "#{$name}"
     config.vm.provider :virtualbox do |vb|
-        vb.name = "devops"
+        vb.name = "#{$name}"
     end
 
     config.vm.box = "ubuntu/bionic64"
@@ -12,9 +20,15 @@ Vagrant.configure('2') do |config|
       v.cpus = 2
     end
 
-    config.vm.synced_folder "../go/", "/home/vagrant/go"
-    config.vm.synced_folder "./scripts/", "/home/vagrant/scripts"
+    config.vm.synced_folder "../go/", "/go"
+    config.vm.synced_folder "./scripts/", "/vagrant-scripts"
 
+    config.vm.provision "shell", inline: $set_environment_variables, run: "always"
     config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime", run: "always"
-    config.vm.provision :shell, :inline => "for f in /home/vagrant/scripts/*.sh; do bash \"$f\"; done", run: "always"
+    config.vm.provision :shell, :inline => "for f in /vagrant-scripts/*.sh; do bash \"$f\"; done", run: "always"
+
+    VAGRANT_COMMAND = ARGV[0]
+    if VAGRANT_COMMAND == "ssh"
+      config.ssh.username = "#{$name}"
+    end
 end

@@ -7,7 +7,7 @@ if ! which go &> /dev/null; then
   sudo apt update -y
   sudo apt install golang-go -y
 
-  echo "export GOPATH=/home/vagrant/go" >> /home/vagrant/.zshrc
+  echo "export GOPATH=/go" >> "/home/${NAME}/.zshrc"
 
   exit 0
 fi

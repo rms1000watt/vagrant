@@ -14,10 +14,10 @@ Vagrant setup locally
 ./init.sh
 
 cd ~/vagrant
-vagrant up
-vagrant ssh
+NAME=pizza vagrant up
+NAME=pizza vagrant ssh
 ```
 
 ## TODO
 
-- https://stackoverflow.com/questions/22643177/ssh-onto-vagrant-box-with-different-username
+- Get smarter with init.sh to create a folder per `$NAME`: `init.sh pizza` => ~/vagrant/pizza && name is read from directory name
