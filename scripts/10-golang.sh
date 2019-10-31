@@ -2,7 +2,7 @@
 
 set -e
 
-if ! which go &> /dev/null; then
+if ! command -v go &> /dev/null; then
   sudo add-apt-repository ppa:longsleep/golang-backports -y
   sudo apt update -y
   sudo apt install golang-go -y

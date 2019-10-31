@@ -2,16 +2,16 @@
 
 set -e
 
-if ! which unzip   &> /dev/null || \
-    ! which zsh    &> /dev/null || \
-    ! which pip3   &> /dev/null || \
-    ! which docker &> /dev/null || \
-    ! which go     &> /dev/null; then
+if ! command -v unzip   &> /dev/null || \
+    ! command -v zsh    &> /dev/null || \
+    ! command -v pip3   &> /dev/null || \
+    ! command -v docker &> /dev/null || \
+    ! command -v go     &> /dev/null; then
 
     sudo apt update -y
 fi
 
 
-if ! which unzip &> /dev/null; then
+if ! command -v unzip &> /dev/null; then
   apt install unzip
 fi

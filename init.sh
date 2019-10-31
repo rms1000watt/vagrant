@@ -7,11 +7,11 @@ fi
 
 echo "Checking Deps..."
 
-if ! which vagrant &> /dev/null; then
+if ! command -v vagrant &> /dev/null; then
   brew cask install vagrant
 fi
 
-if ! which virtualbox &> /dev/null; then
+if ! command -v virtualbox &> /dev/null; then
   brew cask install virtualbox
 fi
 
