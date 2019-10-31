@@ -26,6 +26,7 @@ fi
 echo "Moving files to ${HOME}/vagrant/${name}"
 
 mkdir -p "${HOME}/vagrant/${name}" &> /dev/null
+mkdir -p "${HOME}/vagrant/${name}/.ssh" &> /dev/null
 cp Vagrantfile "${HOME}/vagrant/${name}/Vagrantfile"
 rm -rf "${HOME}/vagrant/${name}/scripts" &> /dev/null
 cp -R scripts "${HOME}/vagrant/${name}/scripts"

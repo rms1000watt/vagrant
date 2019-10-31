@@ -19,6 +19,7 @@ Vagrant.configure('2') do |config|
 
     config.vm.synced_folder "#{`go env GOPATH`.gsub("\n",'')}/", "/go"
     config.vm.synced_folder "./scripts/", "/vagrant-scripts"
+    config.vm.synced_folder "./.ssh/", "/home/vagrant/.ssh"
 
     config.vm.provision :shell, :inline => "$set_environment_variables", run: "always"
     config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime", run: "always"
@@ -26,6 +27,7 @@ Vagrant.configure('2') do |config|
 
     VAGRANT_COMMAND = ARGV[0]
     if VAGRANT_COMMAND == "ssh"
-      config.ssh.username = "#{$name}"
+      # config.ssh.username = "#{$name}"
+      config.ssh.username = "vagrant"
     end
 end
