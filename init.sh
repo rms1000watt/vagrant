@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+name=devops
+if [[ -n $1 ]]; then
+  name=$1
+fi
+
 echo "Checking Deps..."
 
 if ! which vagrant &> /dev/null; then
@@ -18,9 +23,9 @@ if ! vagrant plugin list | grep -q vagrant-disksize; then
   vagrant plugin install vagrant-disksize
 fi
 
-echo "Moving files to ~/vagrant"
+echo "Moving files to ${HOME}/vagrant/${name}"
 
-mkdir ~/vagrant &> /dev/null
-cp Vagrantfile ~/vagrant/Vagrantfile
-rm -rf ~/vagrant/scripts &> /dev/null
-cp -R scripts ~/vagrant/scripts
+mkdir -p "${HOME}/vagrant/${name}" &> /dev/null
+cp Vagrantfile "${HOME}/vagrant/${name}/Vagrantfile"
+rm -rf "${HOME}/vagrant/${name}/scripts" &> /dev/null
+cp -R scripts "${HOME}/vagrant/${name}/scripts"

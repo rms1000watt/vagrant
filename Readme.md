@@ -10,14 +10,24 @@ Vagrant setup locally
 
 ## Usage
 
+Create a Vagrant machine for general `devops` usage:
+
 ```bash
 ./init.sh
 
-cd ~/vagrant
-NAME=pizza vagrant up
-NAME=pizza vagrant ssh
+cd ~/vagrant/devops
+vagrant up
+vagrant ssh
 ```
 
-## TODO
+Create a Vagrant machine for your company `org-x`:
 
-- Get smarter with init.sh to create a folder per `$NAME`: `init.sh pizza` => ~/vagrant/pizza && name is read from directory name
+```bash
+./init.sh org-x
+
+cd ~/vagrant/org-x
+vagrant up
+vagrant ssh
+```
+
+Now you can make a Vagrant machine for each project!

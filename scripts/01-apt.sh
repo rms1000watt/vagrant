@@ -2,10 +2,11 @@
 
 set -e
 
-if ! which unzip &> /dev/null || \
-    ! which zsh  &> /dev/null || \
-    ! which pip3 &> /dev/null || \
-    ! which go   &> /dev/null; then
+if ! which unzip   &> /dev/null || \
+    ! which zsh    &> /dev/null || \
+    ! which pip3   &> /dev/null || \
+    ! which docker &> /dev/null || \
+    ! which go     &> /dev/null; then
 
     sudo apt update -y
 fi
