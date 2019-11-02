@@ -15,8 +15,8 @@ Vagrant.configure('2') do |config|
     config.vm.synced_folder "./scripts/",                        "/scripts"
     config.vm.synced_folder "./aws/",                            "/home/vagrant/.aws"
 
-    config.vm.provision :file,  :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}", destination: "/home/vagrant/.ssh/id_rsa_#{$name}"
-    config.vm.provision :file,  :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}.pub", destination: "/home/vagrant/.ssh/id_rsa_#{$name}.pub"
+    config.vm.provision :file, :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}",     destination: "/home/vagrant/.ssh/id_rsa_#{$name}"
+    config.vm.provision :file, :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}.pub", destination: "/home/vagrant/.ssh/id_rsa_#{$name}.pub"
 
     config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime", run: "always"
     config.vm.provision :shell, :inline => "export NAME=#{$name} && for f in /scripts/*.sh; do bash \"$f\"; done", run: "always"
