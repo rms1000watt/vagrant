@@ -1,11 +1,5 @@
 $name = ENV['NAME'] || File.basename(Dir.getwd)
 
-$set_environment_variables = <<SCRIPT
-cat << EOF > /etc/profile.d/myvars.sh
-export NAME=#{$name}
-EOF
-SCRIPT
-
 Vagrant.configure('2') do |config|
     config.vm.define "#{$name}"
     config.vm.hostname = "#{$name}"
@@ -18,16 +12,12 @@ Vagrant.configure('2') do |config|
     end
 
     config.vm.synced_folder "#{`go env GOPATH`.gsub("\n",'')}/", "/go"
-    config.vm.synced_folder "./scripts/", "/vagrant-scripts"
-    config.vm.synced_folder "./.ssh/", "/home/vagrant/.ssh"
+    config.vm.synced_folder "./scripts/",                        "/scripts"
+    config.vm.synced_folder "./aws/",                            "/home/vagrant/.aws"
 
-    config.vm.provision :shell, :inline => "$set_environment_variables", run: "always"
+    config.vm.provision :file,  :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}", destination: "/home/vagrant/.ssh/id_rsa_#{$name}"
+    config.vm.provision :file,  :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}.pub", destination: "/home/vagrant/.ssh/id_rsa_#{$name}.pub"
+
     config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime", run: "always"
-    config.vm.provision :shell, :inline => "for f in /vagrant-scripts/*.sh; do bash \"$f\"; done", run: "always"
-
-    VAGRANT_COMMAND = ARGV[0]
-    if VAGRANT_COMMAND == "ssh"
-      # config.ssh.username = "#{$name}"
-      config.ssh.username = "vagrant"
-    end
+    config.vm.provision :shell, :inline => "export NAME=#{$name} && for f in /scripts/*.sh; do bash \"$f\"; done", run: "always"
 end

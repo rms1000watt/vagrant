@@ -14,7 +14,6 @@ if ! command -v docker &> /dev/null; then
   fi
 
   sudo usermod -aG docker "${USER}"
-  # sudo usermod -aG docker "${NAME}"
   sudo usermod -aG docker vagrant
   sudo newgrp docker
 
