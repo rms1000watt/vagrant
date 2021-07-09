@@ -3,7 +3,6 @@
 set -e
 
 helmfile_version=0.137.0
-. /home/vagrant/.asdf/asdf.sh
 
 if ! command -v helmfile &> /dev/null; then
   asdf plugin add helmfile

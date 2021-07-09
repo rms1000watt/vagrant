@@ -3,7 +3,6 @@
 set -e
 
 stern_version=1.19.0
-. /home/vagrant/.asdf/asdf.sh
 
 if ! command -v stern &> /dev/null; then
   asdf plugin add stern

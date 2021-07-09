@@ -3,7 +3,6 @@
 set -e
 
 terragrunt_version=0.31.0
-. /home/vagrant/.asdf/asdf.sh
 
 if ! command -v terragrunt &> /dev/null; then
   asdf plugin add terragrunt
