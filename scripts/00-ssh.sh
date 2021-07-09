@@ -4,7 +4,7 @@ if [[ ! -f /home/vagrant/.ssh/config ]]; then
   cat << EOF > /home/vagrant/.ssh/config
 Host github.com
   HostName github.com
-  IdentityFile ~/.ssh/id_rsa_$NAME
+  IdentityFile /home/vagrant/.ssh/id_rsa_$NAME
   User git
 EOF
 
