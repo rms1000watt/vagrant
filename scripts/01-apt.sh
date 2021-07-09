@@ -7,8 +7,6 @@ if ! command -v unzip   &> /dev/null || \
     ! command -v pip3   &> /dev/null || \
     ! command -v docker &> /dev/null || \
     ! command -v node   &> /dev/null || \
-    ! command -v curl   &> /dev/null || \
-    ! command -v git    &> /dev/null || \
     ! command -v go     &> /dev/null; then
 
     echo "sudo apt update -y"
