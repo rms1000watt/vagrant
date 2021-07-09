@@ -3,10 +3,9 @@
 set -e
 
 kubectl_version=v1.19.6
+. /home/vagrant/.asdf/asdf.sh
 
 if ! command -v kubectl &> /dev/null; then
-  . /home/vagrant/.asdf/asdf.sh
-
   asdf plugin add kubectl
   asdf install kubectl ${kubectl_version}
   asdf global kubectl ${kubectl_version}
