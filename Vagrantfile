@@ -3,7 +3,7 @@ $name = ENV['NAME'] || File.basename(Dir.getwd)
 Vagrant.configure('2') do |config|
     config.vm.define "#{$name}"
     config.vm.hostname = "#{$name}"
-    config.vm.box = "ubuntu/foval64"
+    config.vm.box = "ubuntu/focal64"
     config.disksize.size = "50GB"
     config.vm.provider :virtualbox do |v|
       v.name = "#{$name}"
@@ -19,5 +19,5 @@ Vagrant.configure('2') do |config|
     config.vm.provision :file, :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}.pub", destination: "/home/vagrant/.ssh/id_rsa_#{$name}.pub"
 
     config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime", run: "always"
-    config.vm.provision :shell, :inline => "export NAME=#{$name} && for f in /scripts/*.sh; do bash \"$f\"; done", run: "always"
+    config.vm.provision :shell, :inline => "set -e && export NAME=#{$name} && for f in /scripts/*.sh; do bash \"$f\"; done", run: "always"
 end
