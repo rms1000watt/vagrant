@@ -17,6 +17,8 @@ if ! command -v asdf &> /dev/null; then
   echo ". /home/vagrant/.asdf/completions/asdf.bash" >> /root/.bashrc
 
   source /root/.bashrc
+  source /home/vagrant/.asdf/asdf.sh
+  source /home/vagrant/.asdf/completions/asdf.bash
 
   exit 0
 fi
