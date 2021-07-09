@@ -11,19 +11,25 @@ if ! command -v unzip   &> /dev/null || \
     ! command -v git    &> /dev/null || \
     ! command -v go     &> /dev/null; then
 
+    echo "sudo apt update -y"
     sudo apt update -y
 fi
 
 if ! command -v unzip &> /dev/null; then
+  echo "sudo apt install unzip"
   sudo apt install unzip
 fi
 
 if ! command -v curl &> /dev/null; then
+  echo "sudo apt install curl"
   sudo apt install curl
 fi
 
 if ! command -v git &> /dev/null; then
+  echo "sudo apt install git"
   sudo apt install git
 fi
+
+echo "finished 01-apt.sh"
 
 # sudo apt install xfce4 xfce4-goodies tightvncserver
