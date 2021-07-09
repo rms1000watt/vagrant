@@ -2,14 +2,12 @@
 
 set -e
 
-# helm_version=v2.15.2
-helm_version=v2.13.1
+helm_version=3.4.1
 
 if ! command -v helm &> /dev/null; then
-  curl -L -o helm.tar.gz "https://get.helm.sh/helm-${helm_version}-linux-amd64.tar.gz"
-  tar -zxvf helm.tar.gz
-  mv linux-amd64/helm /usr/local/bin
-  rm -rf helm.tar.gz linux-amd64
+  asdf plugin add helm
+  asdf install helm ${helm_version}
+  asdf global helm ${helm_version}
 
   exit 0
 fi

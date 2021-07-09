@@ -2,10 +2,12 @@
 
 set -e
 
+golang_version=1.16.5
+
 if ! command -v go &> /dev/null; then
-  sudo add-apt-repository ppa:longsleep/golang-backports -y
-  sudo apt update -y
-  sudo apt install golang-go -y
+  asdf plugin add golang
+  asdf install golang ${golang_version}
+  asdf global golang ${golang_version}
 
   echo "export GOPATH=/go" >> /home/vagrant/.zshrc
 

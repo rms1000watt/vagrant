@@ -8,15 +8,15 @@ fi
 echo "Checking Deps..."
 
 if ! command -v vagrant &> /dev/null; then
-  brew cask install vagrant
+  brew install --cask vagrant
 fi
 
 if ! command -v virtualbox &> /dev/null; then
-  brew cask install virtualbox
+  brew install --cask virtualbox
 fi
 
 if [[ ! -d "/Applications/Vagrant Manager.app" ]]; then
-  brew cask install vagrant-manager
+  brew install --cask vagrant-manager
 fi
 
 vplist=$(vagrant plugin list)
