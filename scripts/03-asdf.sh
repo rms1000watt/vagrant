@@ -9,7 +9,14 @@ if ! command -v asdf &> /dev/null; then
   git checkout "$(git describe --abbrev=0 --tags)"
 
   echo ". /home/vagrant/.asdf/asdf.sh" >> /home/vagrant/.zshrc
-  source /home/vagrant/.zshrc
+  echo ". /home/vagrant/.asdf/asdf.sh" >> /home/vagrant/.bashrc
+  echo ". /home/vagrant/.asdf/completions/asdf.bash" >> /home/vagrant/.bashrc
+
+  echo ". /home/vagrant/.asdf/asdf.sh" >> /root/.zshrc
+  echo ". /home/vagrant/.asdf/asdf.sh" >> /root/.bashrc
+  echo ". /home/vagrant/.asdf/completions/asdf.bash" >> /root/.bashrc
+
+  source /root/.bashrc
 
   exit 0
 fi
