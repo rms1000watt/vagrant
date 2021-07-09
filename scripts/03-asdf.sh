@@ -2,9 +2,7 @@
 
 set -e
 
-source /root/.bashrc
-
-if ! command -v asdf &> /dev/null; then
+if [[ ! -f /home/vagrant/.asdf/asdf.sh ]]; then
   rm -rf /home/vagrant/.asdf
   git clone https://github.com/asdf-vm/asdf.git /home/vagrant/.asdf
   cd /home/vagrant/.asdf
@@ -19,8 +17,7 @@ if ! command -v asdf &> /dev/null; then
   echo ". /home/vagrant/.asdf/completions/asdf.bash" >> /root/.bashrc
 
   source /root/.bashrc
-  source /home/vagrant/.asdf/asdf.sh
-  source /home/vagrant/.asdf/completions/asdf.bash
+  source /root/.zshrc
 
   exit 0
 fi
