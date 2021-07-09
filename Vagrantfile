@@ -3,7 +3,8 @@ $name = ENV['NAME'] || File.basename(Dir.getwd)
 Vagrant.configure('2') do |config|
     config.vm.define "#{$name}"
     config.vm.hostname = "#{$name}"
-    config.vm.box = "ubuntu/focal64"
+    # config.vm.box = "ubuntu/focal64"
+    config.vm.box = "chenhan/lubuntu-desktop-20.04"
     config.disksize.size = "50GB"
     config.vm.provider :virtualbox do |v|
       v.name = "#{$name}"
