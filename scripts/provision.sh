@@ -15,4 +15,4 @@ while read -r file; do
   bash "${file}"
   echo "DONE: ${file}"
   load_asdf
-done < <(find /scripts -type f)
+done < <(find /scripts -type f | sort)
