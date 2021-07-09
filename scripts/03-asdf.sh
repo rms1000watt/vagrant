@@ -9,6 +9,7 @@ if ! command -v asdf &> /dev/null; then
   git checkout "$(git describe --abbrev=0 --tags)"
 
   echo ". /home/vagrant/.asdf/asdf.sh" >> /home/vagrant/.zshrc
+  source /home/vagrant/.zshrc
 
   exit 0
 fi
