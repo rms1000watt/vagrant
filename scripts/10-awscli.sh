@@ -3,9 +3,7 @@
 set -e
 
 if ! command -v aws &> /dev/null; then
-  source /home/vagrant/.bashrc
-
-  sudo pip3 install awscli -U
+  sudo /home/vagrant/.local/bin/pip3 install awscli -U
 
   exit 0
 fi

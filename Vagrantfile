@@ -19,7 +19,7 @@ Vagrant.configure('2') do |config|
     config.vm.provision :file, :source => "#{ENV['HOME']}/.ssh/id_rsa_#{$name}.pub", destination: "/home/vagrant/.ssh/id_rsa_#{$name}.pub"
 
     config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime", run: "always", privileged: false
-    config.vm.provision :shell, :inline => "set -e && export NAME=#{$name} && for f in /scripts/*.sh; do bash \"$f\"; done", run: "always",  privileged: false
+    config.vm.provision :shell, :inline => "set -e && export NAME=#{$name} && for f in /scripts/*.sh; do echo HANDLING FILE: $f && bash \"$f\"; done", run: "always",  privileged: false
 end
 
 # export ASDF_DATA_DIR=/home/vagrant/asdf

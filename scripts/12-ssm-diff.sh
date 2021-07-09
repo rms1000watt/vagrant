@@ -3,8 +3,7 @@
 set -e
 
 if ! command -v ssm-diff &> /dev/null; then
-  source /home/vagrant/.bashrc
-  sudo pip3 install ssm-diff -U
+  sudo /home/vagrant/.local/bin/pip3 install ssm-diff -U
 
   exit 0
 fi
