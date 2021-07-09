@@ -5,7 +5,7 @@ set -e
 terraform_version=1.0.1
 
 if ! command -v terraform &> /dev/null; then
-  source /root/.bashrc
+  . /home/vagrant/.asdf/asdf.sh
 
   asdf plugin add terraform
   asdf install terraform ${terraform_version}
