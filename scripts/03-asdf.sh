@@ -2,6 +2,8 @@
 
 set -e
 
+source /root/.bashrc
+
 if ! command -v asdf &> /dev/null; then
   rm -rf /home/vagrant/.asdf
   git clone https://github.com/asdf-vm/asdf.git /home/vagrant/.asdf
