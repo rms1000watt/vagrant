@@ -8,6 +8,9 @@ if ! command -v pip3 &> /dev/null; then
   python3 get-pip.py
   rm get-pip.py
 
+  echo "export PATH=\$PATH:/home/vagrant/.local/bin" >> /home/vagrant/.bashrc
+  echo "export PATH=\$PATH:/home/vagrant/.local/bin" >> /home/vagrant/.zshrc
+
   exit 0
 fi
 

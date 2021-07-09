@@ -2,7 +2,7 @@
 
 set -e
 
-terraform_version=1.0.1
+terraform_version=1.0.2
 
 if ! command -v terraform &> /dev/null; then
   . /home/vagrant/.asdf/asdf.sh
