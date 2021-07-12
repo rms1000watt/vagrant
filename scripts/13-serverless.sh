@@ -3,7 +3,7 @@
 set -e
 
 if ! command -v serverless &> /dev/null; then
-  curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+  curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
   sudo apt install nodejs -y
   npm install -g serverless
 

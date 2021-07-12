@@ -13,7 +13,7 @@ if ! command -v docker &> /dev/null; then
     sudo groupadd docker
   fi
 
-  sudo usermod -aG docker "${USER}"
+  # sudo usermod -aG docker "${USER}"
   sudo usermod -aG docker vagrant
   sudo newgrp docker
 
