@@ -15,7 +15,7 @@ if ! command -v docker &> /dev/null; then
 
   # sudo usermod -aG docker "${USER}"
   sudo usermod -aG docker vagrant
-  sudo newgrp docker
+  # sudo newgrp docker
 
   sudo systemctl enable docker
 

@@ -31,7 +31,9 @@ mkdir -p "${HOME}/vagrant/${name}" &> /dev/null
 mkdir -p "${HOME}/vagrant/${name}/aws" &> /dev/null
 
 if [[ ! -f ${HOME}/.ssh/id_rsa_${name} ]] && [[ ! -f ${HOME}/.ssh/id_rsa_${name}.pub ]]; then
-  ssh-keygen -t rsa -C "vagrant@${name}" -f "${HOME}/.ssh/id_rsa_${name}" -P ''
+  echo "Enter your email address for the RSA key:"
+  read -r email_address
+  ssh-keygen -t rsa -C "${email_address}" -f "${HOME}/.ssh/id_rsa_${name}" -P ''
 fi
 
 cp Vagrantfile "${HOME}/vagrant/${name}/Vagrantfile"
