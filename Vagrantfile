@@ -3,19 +3,13 @@ $name = ENV['NAME'] || File.basename(Dir.getwd)
 Vagrant.configure('2') do |config|
     config.vm.define "#{$name}"
     config.vm.hostname = "#{$name}"
-    # config.vm.box = "ubuntu/focal64"
-    config.vm.box = "chenhan/lubuntu-desktop-20.04"
+    config.vm.box = "ubuntu/focal64"
     config.disksize.size = "64GB"
     config.vm.provider :virtualbox do |v|
       v.name = "#{$name}"
       v.cpus = 2
       v.memory = 4096
-
-      # Use VNC insteady of Virtualbox
-      v.gui = false
     end
-
-    config.vm.network "forwarded_port", guest: 5901, host: 5901, auto_correct: true
 
     config.vm.synced_folder "#{`go env GOPATH`.gsub("\n",'')}/", "/go"
     config.vm.synced_folder "./scripts/",                        "/scripts"
