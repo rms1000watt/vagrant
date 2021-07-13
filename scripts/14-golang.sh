@@ -3,7 +3,6 @@
 set -e
 
 golang_version=1.16.5
-. /home/vagrant/.asdf/asdf.sh
 
 if ! command -v go &> /dev/null; then
   asdf plugin add golang
