@@ -7,6 +7,7 @@ if ! command -v unzip   &> /dev/null || \
     ! command -v pip3   &> /dev/null || \
     ! command -v docker &> /dev/null || \
     ! command -v direnv &> /dev/null || \
+    ! command -v chrony &> /dev/null || \
     ! command -v node   &> /dev/null; then
 
     echo "sudo apt update -y"
@@ -26,6 +27,11 @@ fi
 if ! command -v git &> /dev/null; then
   echo "sudo apt install git"
   sudo apt install git
+fi
+
+if ! command -v chrony &> /dev/null; then
+  echo "sudo apt install chrony"
+  sudo apt install chrony
 fi
 
 echo "finished 01-apt.sh"
