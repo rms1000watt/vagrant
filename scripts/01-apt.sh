@@ -30,4 +30,9 @@ if ! command -v chronyd &> /dev/null; then
   sudo apt install chrony
 fi
 
+# Update git to use vim as the editor
+if ! git config --global -l | grep -q vim; then
+  git config --global core.editor "vim"
+fi
+
 echo "finished 01-apt.sh"
