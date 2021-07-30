@@ -2,34 +2,30 @@
 
 set -e
 
-if ! command -v unzip   &> /dev/null || \
-    ! command -v zsh    &> /dev/null || \
-    ! command -v pip3   &> /dev/null || \
-    ! command -v docker &> /dev/null || \
-    ! command -v direnv &> /dev/null || \
-    ! command -v chrony &> /dev/null || \
-    ! command -v node   &> /dev/null; then
+checks=(unzip curl git zsh pip3 docker direnv chronyd node)
+apt_installs=(unzip curl git)
 
-    echo "sudo apt update -y"
-    sudo apt update -y
+need_update=false
+for check in "${checks[@]}"; do
+  if ! command -v "${check}" &> /dev/null; then
+    need_update=true
+  fi
+done
+
+if ${need_update}; then
+  echo "sudo apt update -y"
+  sudo apt update -y
 fi
 
-if ! command -v unzip &> /dev/null; then
-  echo "sudo apt install unzip"
-  sudo apt install unzip
-fi
+for apt_install in "${apt_installs[@]}"; do
+  if ! command -v "${apt_install}" &> /dev/null; then
+    echo "sudo apt install ${apt_install}"
+    sudo apt install "${apt_install}"
+  fi
+done
 
-if ! command -v curl &> /dev/null; then
-  echo "sudo apt install curl"
-  sudo apt install curl
-fi
-
-if ! command -v git &> /dev/null; then
-  echo "sudo apt install git"
-  sudo apt install git
-fi
-
-if ! command -v chrony &> /dev/null; then
+# UGH.. figure out a better pattern for this in the arrays above
+if ! command -v chronyd &> /dev/null; then
   echo "sudo apt install chrony"
   sudo apt install chrony
 fi
