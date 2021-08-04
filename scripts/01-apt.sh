@@ -2,8 +2,8 @@
 
 set -e
 
-checks=(unzip curl git zsh pip3 docker direnv chronyd node)
-apt_installs=(unzip curl git)
+checks=(unzip curl git zsh pip3 docker direnv chronyd node jq)
+apt_installs=(unzip curl git jq)
 
 need_update=false
 for check in "${checks[@]}"; do
