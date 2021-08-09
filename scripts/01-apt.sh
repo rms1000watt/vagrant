@@ -20,14 +20,14 @@ fi
 for apt_install in "${apt_installs[@]}"; do
   if ! command -v "${apt_install}" &> /dev/null; then
     echo "sudo apt install ${apt_install}"
-    sudo apt install "${apt_install}"
+    sudo apt install -y "${apt_install}"
   fi
 done
 
 # UGH.. figure out a better pattern for this in the arrays above
 if ! command -v chronyd &> /dev/null; then
   echo "sudo apt install chrony"
-  sudo apt install chrony
+  sudo apt install -y chrony
 fi
 
 # Update git to use vim as the editor
