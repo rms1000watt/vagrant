@@ -2,7 +2,7 @@
 
 set -e
 
-kubectl_version=v1.19.6
+kubectl_version=1.20.9
 
 if ! command -v kubectl &> /dev/null; then
   asdf plugin add kubectl
