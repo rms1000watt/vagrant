@@ -10,6 +10,8 @@ if ! command -v go &> /dev/null; then
   asdf global golang ${golang_version}
 
   echo "export GOPATH=/go" >> /home/vagrant/.zshrc
+  echo "export PATH=\$PATH:\$GOPATH/bin" >> /home/vagrant/.zshrc
+  echo "source /home/vagrant/.zshrc" >> /home/vagrant/.bash_profile
 
   exit 0
 fi
