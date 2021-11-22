@@ -9,6 +9,8 @@ if ! command -v helm &> /dev/null; then
   asdf install helm ${helm_version}
   asdf global helm ${helm_version}
 
+  helm plugin install https://github.com/databus23/helm-diff
+
   exit 0
 fi
 
