@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Vagrant setup locally
+Vagrant setup locally for Intel Macs
 
 ## Contents
 
